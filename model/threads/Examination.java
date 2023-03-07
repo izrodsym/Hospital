@@ -43,8 +43,9 @@ public class Examination extends Thread {
         if (doctor.isWaitingVisitation()) { // if there is a visitation at the same time run visitation
             doctor.setWaitingVisitation(false); // set waiting for visitation as false
             hospital.doctorVisitation(doctor); // run visitation
+        } else {
+            doctor.setFree(true);   // set availability of doctor
+            hospital.examinePatients(); // method that examine waiting patients
         }
-        doctor.setFree(true);   // set availability of doctor
-        hospital.examinePatients(); // method that examine waiting patients
     }
 }
